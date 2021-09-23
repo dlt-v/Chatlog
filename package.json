@@ -22,7 +22,7 @@
         "dev": "npm-run-all --parallel front server styling",
         "server": "json-server --watch db.json --port 3001",
         "front": "react-scripts start",
-        "styling": "sass --watch src/style.scss src/style.css",
+        "styling": "sass --watch src/styles/style.scss src/styles/style.css",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
