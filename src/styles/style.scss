@@ -1,5 +1,122 @@
-@import url("icons.css");
+@import url('icons.css');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+// colors
+$bg: #fff;
+$c: #5679f2;
+$t: #2d375a;
+$bgl: #e8effd;
 
 html {
-    background-color: red;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 0.3px;
+    max-width: 400px;
+    margin: 0 auto;
+    color: $t;
+    background-color: $bg;
+}
+
+.login {
+    width: calc(100% - 60px);
+    margin: 30px;
+
+    &__container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__artwork {
+        margin-top: 10vh;
+        width: 60%;
+    }
+
+    &__title {
+        text-align: center;
+        color: $c;
+    }
+
+    &__input {
+        all: unset;
+        margin-top: 20px;
+        width: calc(90% - 40px);
+        background-color: $bgl;
+        padding: 15px 20px;
+        border-radius: 1000px;
+        font-size: 14px;
+        color: $t;
+        font-family: 'Open Sans', sans-serif;
+        letter-spacing: 0.3px;
+        text-align: center;
+        font-weight: bold;
+        transition: 0.3s ease;
+
+        &::placeholder {
+            opacity: 0.3;
+            color: $t;
+            font-size: 14px;
+        }
+
+        &:active,
+        &:focus {
+            width: calc(100% - 40px);
+        }
+    }
+
+    &__selectText {
+        font-weight: bold;
+        font-size: 14px;
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    &__avatars {
+        display: grid;
+        grid-template-columns: 0.25fr 0.25fr 0.25fr 0.25fr;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    &__item {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        opacity: 0.3;
+        transition: 0.3s ease;
+
+        &--active {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.3;
+            transition: 0.3s ease;
+            opacity: 1;
+        }
+    }
+
+    &__avatar {
+        width: 70%;
+    }
+
+    &__btn {
+        all: unset;
+        background-color: $c;
+        color: white;
+        padding: 15px 0;
+        width: 100%;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 100px;
+        margin-top: 40px;
+        font-size: 14px;
+        transition: 0.3s 0.3s;
+
+        &:active {
+            transition: 0.3s;
+            transform: scale(0.9);
+        }
+    }
 }

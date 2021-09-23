@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import App from './pages/App';
+import { Login } from './pages/Login';
 
 console.log('Testing database connection...');
 fetch('http://localhost:3001/users/0')
@@ -14,10 +15,21 @@ ReactDOM.render(
     <React.StrictMode>
         <Router>
             <div>
-                <Link to="/">cośtam</Link>
+                <ul>
+                    <li>
+                        <Link to="/">app</Link>
+                    </li>
+                    <li>
+                        <Link to="/login">login</Link>
+                    </li>
+                </ul>
+
                 <Switch>
-                    <Route path="/">
+                    <Route exact path="/">
                         <App />
+                    </Route>
+                    <Route path="/login">
+                        <Login />
                     </Route>
                 </Switch>
             </div>
