@@ -1,7 +1,9 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Costam from './costam';
 import reportWebVitals from './reportWebVitals';
 
 console.log('Testing database connection...');
@@ -13,7 +15,28 @@ fetch('http://localhost:3001/users/0')
 
 ReactDOM.render(
     <React.StrictMode>
-        <App />
+        <Router>
+            <div>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to="/">cośtam</Link>
+                        </li>
+                        <li>
+                            <Link to="/costam">cośtam</Link>
+                        </li>
+                    </ul>
+                </nav>
+                <Switch>
+                    <Route path="/costam">
+                        <Costam />
+                    </Route>
+                    <Route path="/">
+                        <App />
+                    </Route>
+                </Switch>
+            </div>
+        </Router>
     </React.StrictMode>,
     document.getElementById('root')
 );
