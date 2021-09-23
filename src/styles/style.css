@@ -46,6 +46,7 @@ html {
   opacity: 0.3;
   color: #2d375a;
   font-size: 14px;
+  font-weight: 400;
 }
 .login__input:active, .login__input:focus {
   width: calc(100% - 40px);
