@@ -5,12 +5,7 @@ import av1 from '../styles/img/av-1.svg';
 import av2 from '../styles/img/av-2.svg';
 import av3 from '../styles/img/av-3.svg';
 
-interface Props {
-    handleNick?: void;
-    setData?: void;
-}
-
-export const Login: React.FC<Props> = () => {
+export const Login: React.FC = () => {
     const [nickname, setnickname] = useState<string>('');
     const [avatar, setavatar] = useState<number>(100);
 
