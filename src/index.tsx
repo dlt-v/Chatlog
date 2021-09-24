@@ -16,25 +16,17 @@ fetch('http://localhost:3001/users/0')
 ReactDOM.render(
     <React.StrictMode>
         <Router>
-            <div>
-                <ul>
-                    <li>
-                        <Link to="/">app</Link>
-                    </li>
-                    <li>
-                        <Link to="/login">login</Link>
-                    </li>
-                </ul>
+            <Link to="/">app</Link>
+            <Link to="/login">login</Link>
 
-                <Switch>
-                    <Route exact path="/">
-                        <App />
-                    </Route>
-                    <Route path="/login">
-                        <Login />
-                    </Route>
-                </Switch>
-            </div>
+            <Switch>
+                <Route exact path="/">
+                    <App />
+                </Route>
+                <Route path="/login">
+                    <Login />
+                </Route>
+            </Switch>
         </Router>
     </React.StrictMode>,
     document.getElementById('root')

@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import artwork from '../styles/img/artwork.svg';
+
 import av0 from '../styles/img/av-0.svg';
 import av1 from '../styles/img/av-1.svg';
 import av2 from '../styles/img/av-2.svg';
 import av3 from '../styles/img/av-3.svg';
+
+interface User {
+    avatar: number;
+    name: string;
+}
 
 export const Login: React.FC = () => {
     const [nickname, setnickname] = useState<string>('');
@@ -15,17 +21,35 @@ export const Login: React.FC = () => {
         } // limit 20 characters, special characters are forbidden
     };
 
-    const setData = () => {
+    const validateInput = async () => {
         if (nickname.length > 2) {
-            const user = {
-                id: new Date().getTime(), // is better way?
-                name: nickname,
-                avatar: avatar === 100 ? Math.floor(Math.random() * 4) : avatar, // set random avatar if is unselected
-            };
-            console.log(user);
+            await fetch('http://localhost:3001/users')
+                .then((response) => response.json())
+                .then((data) => {
+                    if (
+                        data.find(
+                            (otherUser: User) => nickname === otherUser.name
+                        )
+                    ) {
+                        alert('Please use an original name');
+                    } else {
+                        createNewUser();
+                    }
+                });
         }
-
-        // todo: implement data validation and add user to users list
+    };
+    const createNewUser = async () => {
+        const newUser: User = {
+            name: nickname,
+            avatar: avatar === 100 ? Math.floor(Math.random() * 4) : avatar,
+        };
+        await fetch('http://localhost:3001/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newUser),
+        });
     };
 
     return (
@@ -90,7 +114,7 @@ export const Login: React.FC = () => {
                 </div>
             </div>
 
-            <button onClick={setData} className="login__btn">
+            <button onClick={validateInput} className="login__btn">
                 Let's go
             </button>
         </div>
