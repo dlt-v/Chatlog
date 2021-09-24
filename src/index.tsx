@@ -8,8 +8,8 @@ import './styles/style.css';
 
 console.log('Testing database connection...');
 fetch('http://localhost:3001/users/0')
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
         if (data) console.log('We have connection!');
     });
 
