@@ -13,14 +13,14 @@ export interface UserState {
 }
 
 export const UserDataProvider = (props: any) => {
-    const [user] = useState<UserState>({
+    const [user, setUser] = useState<UserState>({
         id: -1,
         avatar: -1,
         name: '',
     });
 
     return (
-        <UserDataContext.Provider value={user}>
+        <UserDataContext.Provider value={[user, setUser]}>
             {props.children}
         </UserDataContext.Provider>
     );

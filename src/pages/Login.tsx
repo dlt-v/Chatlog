@@ -16,7 +16,7 @@ interface User {
 export const Login: React.FC = () => {
     const [nickname, setnickname] = useState<string>('');
     const [avatar, setavatar] = useState<number>(100);
-    const user = useContext(UserDataContext);
+    const [user, setUser] = useContext(UserDataContext);
 
     const handleNick = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.value.length < 20) {
