@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import { Login } from './pages/Login';
@@ -13,6 +13,8 @@ fetch('http://localhost:3001/users/0')
         if (data) console.log('We have connection!');
     });
 
+
+    
 ReactDOM.render(
     <React.StrictMode>
         <Router>
