@@ -16,7 +16,7 @@ interface User {
 export const Login: React.FC = () => {
     const [nickname, setnickname] = useState<string>('');
     const [avatar, setavatar] = useState<number>(100);
-    const [user, setUser] = useContext(UserDataContext);
+    const { user, setUser } = useContext(UserDataContext);
 
     const handleNick = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.value.length < 20) {
@@ -37,6 +37,7 @@ export const Login: React.FC = () => {
                         alert('Please use an original name');
                     } else {
                         createNewUser();
+                        setUser({ id: 100, avatar: 1, name: nickname })
                     }
                 });
         }
@@ -57,7 +58,7 @@ export const Login: React.FC = () => {
 
     return (
         <div className="login">
-            <h1>{user.name}!</h1>
+            <h3>Login as: {user.name}</h3>
             <div className="login__container">
                 <img src={artwork} alt={artwork} className="login__artwork" />
             </div>

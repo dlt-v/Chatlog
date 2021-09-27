@@ -1,27 +1,32 @@
 import { useState, createContext } from 'react';
 
-export const UserDataContext = createContext({
-    id: -1,
-    avatar: -1,
-    name: '',
-});
+type Props = {
+    children: React.ReactNode;
+};
 
-export interface UserState {
+type UserState = {
     id: number;
     avatar: number;
     name: string;
-}
+};
 
-export const UserDataProvider = (props: any) => {
-    const [user, setUser] = useState<UserState>({
+const initialContext = {
+    user: {
         id: -1,
         avatar: -1,
-        name: '',
-    });
+        name: '*click button',
+    },
+    setUser: (user: UserState) => {},
+};
+
+export const UserDataContext = createContext(initialContext);
+
+export const UserDataProvider = ({ children }: Props) => {
+    const [user, setUser] = useState(initialContext.user);
 
     return (
-        <UserDataContext.Provider value={[user, setUser]}>
-            {props.children}
+        <UserDataContext.Provider value={{ user, setUser }}>
+            {children}
         </UserDataContext.Provider>
     );
 };
