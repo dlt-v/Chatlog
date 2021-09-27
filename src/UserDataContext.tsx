@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, createContext } from 'react';
 
 export const UserDataContext = createContext({});
 
@@ -8,16 +8,15 @@ export interface User {
     name: string;
 }
 
-export const UserDataProvider = () => {
+export const UserDataProvider = (props: any) => {
     const [user, setUser] = useState<User>({
-        //By default user is not logged in
         avatar: -1,
         name: '',
     });
 
     return (
-        <UserDataContext.Provider
-            value={[user, setUser]}
-        ></UserDataContext.Provider>
+        <UserDataContext.Provider value={[user, setUser]}>
+            {props.children}
+        </UserDataContext.Provider>
     );
 };

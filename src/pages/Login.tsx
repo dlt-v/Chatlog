@@ -57,7 +57,6 @@ export const Login: React.FC = () => {
             <div className="login__container">
                 <img src={artwork} alt={artwork} className="login__artwork" />
             </div>
-
             <h1 className="login__title">Hello!</h1>
             <div className="login__container">
                 <input
