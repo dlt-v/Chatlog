@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UserDataContext } from '../UserDataContext';
+
 import artwork from '../styles/img/artwork.svg';
 
 import av0 from '../styles/img/av-0.svg';
@@ -14,6 +16,7 @@ interface User {
 export const Login: React.FC = () => {
     const [nickname, setnickname] = useState<string>('');
     const [avatar, setavatar] = useState<number>(100);
+    const { user, setUser } = useContext(UserDataContext);
 
     const handleNick = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.value.length < 20) {
@@ -34,6 +37,7 @@ export const Login: React.FC = () => {
                         alert('Please use an original name');
                     } else {
                         createNewUser();
+                        setUser({ id: 100, avatar: 1, name: nickname })
                     }
                 });
         }
@@ -54,10 +58,10 @@ export const Login: React.FC = () => {
 
     return (
         <div className="login">
+            <h3>Login as: {user.name}</h3>
             <div className="login__container">
                 <img src={artwork} alt={artwork} className="login__artwork" />
             </div>
-
             <h1 className="login__title">Hello!</h1>
             <div className="login__container">
                 <input
