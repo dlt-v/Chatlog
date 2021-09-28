@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 
 interface Current {
     friends?: boolean;
@@ -8,12 +9,12 @@ interface Current {
 export const Navigation: React.FC<Current> = (props) => {
     const friends = props.friends;
     const search = props.search;
-
-    // todo: create routing to friends-page, send-page and search-page
+    let history = useHistory();
 
     return (
         <div className="main__navigation">
             <div
+                onClick={() => history.push('/friends')}
                 className={`${
                     friends
                         ? 'main__navigation__friends--active'
@@ -26,6 +27,7 @@ export const Navigation: React.FC<Current> = (props) => {
                 <span className="icon-send"></span>
             </div>
             <div
+                onClick={() => history.push('/search')}
                 className={`${
                     search
                         ? 'main__navigation__search--active'
