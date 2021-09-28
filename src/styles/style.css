@@ -107,8 +107,17 @@ html {
 }
 .main__userHeader {
   width: 100%;
-  border: 1px solid red;
-  display: flex;
+  display: grid;
+  grid-template-columns: 0fr 1fr 0fr;
+  align-items: center;
+}
+.main__userHeader img {
+  height: 50px;
+  margin-right: 20px;
+}
+.main__userHeader__userName {
+  font-weight: 700;
+  font-size: 18px;
 }
 
 /*# sourceMappingURL=style.css.map */

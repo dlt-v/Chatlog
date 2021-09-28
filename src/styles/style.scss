@@ -127,13 +127,22 @@ html {
     margin: 30px;
     &__userHeader {
         width: 100%;
-        border: 1px solid red;
-        display: flex;
+        display: grid;
+        grid-template-columns: 0fr 1fr 0fr;
+        align-items: center;
         & img {
+            height: 50px;
+            margin-right: 20px;
         }
         &__userName {
+            font-weight: 700;
+            font-size: 18px;
         }
         & .icon-options {
         }
     }
+}
+
+.dropdown {
+    
 }
