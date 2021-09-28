@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { UserDataProvider } from './UserDataContext';
 
 import { Login } from './pages/Login';
+import { Main } from './pages/Main';
 export function App() {
     return (
         <UserDataProvider>
@@ -11,7 +12,7 @@ export function App() {
 
                 <Switch>
                     <Route exact path="/">
-                        <h1>Welcome to the menu!</h1>
+                        <Main />
                     </Route>
                     <Route path="/login">
                         <Login />

@@ -77,7 +77,6 @@ export const Login: React.FC = () => {
 
     return (
         <div className="login">
-            <h3>Login as: {user.name}</h3>
             <div className="login__container">
                 <img src={artwork} alt={artwork} className="login__artwork" />
             </div>
