@@ -23,7 +23,8 @@ export const Navigation: React.FC<Current> = (props) => {
             >
                 <span className="icon-contacts"></span>
             </div>
-            <div className="main__navigation__send">
+            <div  onClick={() => history.push('/send')}
+            className="main__navigation__send">
                 <span className="icon-send"></span>
             </div>
             <div
