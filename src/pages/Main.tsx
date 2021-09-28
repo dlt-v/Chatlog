@@ -1,8 +1,11 @@
-import React, { useContext } from 'react';
-import { UserDataContext } from '../UserDataContext';
+import React from 'react';
+
+import { UserHeader } from '../components/UserHeader';
 
 export const Main: React.FC = () => {
-    const { user, setUser } = useContext(UserDataContext);
-
-    return <h1>Hello {user.name}!</h1>;
+    return (
+        <div className="main">
+            <UserHeader />
+        </div>
+    );
 };

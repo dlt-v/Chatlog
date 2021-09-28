@@ -121,3 +121,19 @@ html {
         }
     }
 }
+
+.main {
+    width: calc(100% - 60px);
+    margin: 30px;
+    &__userHeader {
+        width: 100%;
+        border: 1px solid red;
+        display: flex;
+        & img {
+        }
+        &__userName {
+        }
+        & .icon-options {
+        }
+    }
+}

@@ -101,4 +101,14 @@ html {
   transform: scale(0.9);
 }
 
+.main {
+  width: calc(100% - 60px);
+  margin: 30px;
+}
+.main__userHeader {
+  width: 100%;
+  border: 1px solid red;
+  display: flex;
+}
+
 /*# sourceMappingURL=style.css.map */
