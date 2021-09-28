@@ -1,6 +1,104 @@
 @import url("icons.css");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
 html {
-  background-color: red;
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 0.3px;
+  max-width: 400px;
+  margin: 0 auto;
+  color: #2d375a;
+  background-color: #fff;
+}
+
+.login {
+  width: calc(100% - 60px);
+  margin: 30px;
+}
+.login__container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login__artwork {
+  margin-top: 10vh;
+  width: 60%;
+}
+.login__title {
+  text-align: center;
+  color: #5679f2;
+}
+.login__input {
+  all: unset;
+  margin-top: 20px;
+  width: calc(90% - 40px);
+  background-color: #e8effd;
+  padding: 15px 20px;
+  border-radius: 1000px;
+  font-size: 14px;
+  color: #2d375a;
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 0.3px;
+  text-align: center;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+.login__input::placeholder {
+  opacity: 0.3;
+  color: #2d375a;
+  font-size: 14px;
+  font-weight: 400;
+}
+.login__input:active, .login__input:focus {
+  width: calc(100% - 40px);
+}
+.login__selectText {
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 40px;
+}
+.login__avatars {
+  display: grid;
+  grid-template-columns: 0.25fr 0.25fr 0.25fr 0.25fr;
+  margin-top: 20px;
+  width: 100%;
+}
+.login__item {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.3;
+  transition: 0.3s ease;
+}
+.login__item--active {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.3;
+  transition: 0.3s ease;
+  opacity: 1;
+}
+.login__avatar {
+  width: 70%;
+}
+.login__btn {
+  all: unset;
+  background-color: #5679f2;
+  color: white;
+  padding: 15px 0;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 100px;
+  margin-top: 40px;
+  font-size: 14px;
+  transition: 0.3s 0.3s;
+}
+.login__btn:active {
+  transition: 0.3s;
+  transform: scale(0.9);
 }
 
 /*# sourceMappingURL=style.css.map */
