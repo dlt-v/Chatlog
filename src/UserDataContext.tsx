@@ -4,7 +4,7 @@ type Props = {
     children: React.ReactNode;
 };
 
-type UserState = {
+export type UserState = {
     id: number;
     avatar: number;
     name: string;
@@ -14,7 +14,7 @@ const initialContext = {
     user: {
         id: -1,
         avatar: -1,
-        name: '*click button',
+        name: '',
     },
     setUser: (user: UserState) => {},
 };

@@ -31,14 +31,19 @@
       "id": 5
     },
     {
-      "name": "dsad",
-      "avatar": 0,
+      "name": "Tomcio",
+      "avatar": 1,
       "id": 6
     },
     {
-      "name": "dzieckozautyzmem",
-      "avatar": 3,
+      "name": "Tomeczek",
+      "avatar": 1,
       "id": 7
+    },
+    {
+      "name": "Damian",
+      "avatar": 2,
+      "id": 8
     }
   ],
   "chats": [

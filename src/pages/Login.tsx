@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { UserDataContext } from '../UserDataContext';
+import { useHistory } from 'react-router';
 
 import artwork from '../styles/img/artwork.svg';
 
@@ -18,6 +19,8 @@ export const Login: React.FC = () => {
     const [avatar, setavatar] = useState<number>(100);
     const { user, setUser } = useContext(UserDataContext);
 
+    let history = useHistory();
+
     const handleNick = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.value.length < 20) {
             setnickname(e.target.value.replace(/[^a-zA-Z0-9]/g, ''));
@@ -34,10 +37,11 @@ export const Login: React.FC = () => {
                             (otherUser: User) => nickname === otherUser.name
                         )
                     ) {
-                        alert('Please use an original name');
+                        //User already exists -> login
+                        loginUser(nickname);
                     } else {
+                        //User doesn't exist -> create an account and login
                         createNewUser();
-                        setUser({ id: 100, avatar: 1, name: nickname })
                     }
                 });
         }
@@ -45,7 +49,7 @@ export const Login: React.FC = () => {
     const createNewUser = async () => {
         const newUser: User = {
             name: nickname,
-            avatar: avatar === 100 ? Math.floor(Math.random() * 4) : avatar,
+            avatar: avatar === -1 ? Math.floor(Math.random() * 4) : avatar,
         };
         await fetch('http://localhost:3001/users', {
             method: 'POST',
@@ -54,6 +58,21 @@ export const Login: React.FC = () => {
             },
             body: JSON.stringify(newUser),
         });
+
+        loginUser(newUser.name);
+    };
+
+    const loginUser = async (name: string) => {
+        const result = await fetch(
+            `http://localhost:3001/users?name=${name}`
+        ).then((response) => response.json());
+
+        setUser({
+            name: result[0].name,
+            id: result[0].id,
+            avatar: result[0].avatar,
+        });
+        history.push('/');
     };
 
     return (
