@@ -135,22 +135,40 @@ html {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         align-items: center;
-        justify-content: center;
         font-size: 20px;
         background-color: $bg;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        padding-right: 100%;
-        padding-left: 100%;
+        padding: 20px 100%;
 
         &__friends {
             justify-self: center;
             opacity: 0.3;
+            transition: 0.3s 0.3s;
+            display: flex;
+            align-items: center;
+
+            &:active {
+                transition: 0.3s;
+                transform: scale(0.8);
+            }
+
+            &--active {
+                @extend .main__navigation__friends;
+                opacity: 1;
+                background-color: $bgl;
+                padding: 7px;
+                border-radius: 100%;
+            }
         }
 
         &__send {
             justify-self: center;
             font-size: 30px;
+            transition: 0.3s 0.3s;
+
+            &:active {
+                transition: 0.3s;
+                transform: scale(0.8);
+            }
 
             & .icon-send::before {
                 color: $c;
@@ -158,8 +176,16 @@ html {
         }
 
         &__search {
-            justify-self: center;
-            opacity: 0.3;
+            @extend .main__navigation__friends;
+
+            &:active {
+                transition: 0.3s;
+                transform: scale(0.8);
+            }
+
+            &--active {
+                @extend .main__navigation__friends--active;
+            }
         }
     }
 }
