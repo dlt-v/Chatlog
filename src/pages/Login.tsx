@@ -17,7 +17,7 @@ interface User {
 export const Login: React.FC = () => {
     const [nickname, setnickname] = useState<string>('');
     const [avatar, setavatar] = useState<number>(100);
-    const { user, setUser } = useContext(UserDataContext);
+    const { setUser } = useContext(UserDataContext); //probable minefield
 
     let history = useHistory();
 
