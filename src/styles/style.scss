@@ -156,41 +156,6 @@ html {
             font-size: 18px;
         }
     }
-}
-
-.dropdown {
-    position: fixed;
-    right: 30px;
-    top: 110px;
-
-    width: 130px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: $bgl;
-    border-radius: 10px;
-    &__item {
-        height: 40px;
-        width: 100%;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-bottom: 1px solid darken($bgl, 5%);
-        text-decoration: none;
-        color: $t;
-
-        &:last-child {
-            border-bottom: none;
-        }
-
-        & span {
-            display: block;
-        }
-        &--bold {
-            font-weight: 700;
-
     &__navigation {
         position: fixed;
         width: 250px;
@@ -251,6 +216,42 @@ html {
             &--active {
                 @extend .main__navigation__friends--active;
             }
+        }
+    }
+}
+
+.dropdown {
+    position: fixed;
+    right: 30px;
+    top: 110px;
+
+    width: 130px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $bgl;
+    border-radius: 10px;
+    &__item {
+        height: 40px;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid darken($bgl, 5%);
+        text-decoration: none;
+        color: $t;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        & span {
+            display: block;
+        }
+        &--bold {
+            font-weight: 700;
         }
     }
 }
