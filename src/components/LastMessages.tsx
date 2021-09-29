@@ -1,16 +1,11 @@
 import React from 'react';
-
-import av0 from '../styles/img/av-0.svg';
-import av1 from '../styles/img/av-1.svg';
-import av2 from '../styles/img/av-2.svg';
-import av3 from '../styles/img/av-3.svg';
 import { HistoryMessage } from './HistoryMessage';
 
 export const LastMessages: React.FC = () => {
     const last = [
         {
             id: 1,
-            avatar: av0,
+            avatar: 1,
             name: 'Kalafior',
             time: '12:50',
             message: 'siema co tam u ciebie',
@@ -18,7 +13,7 @@ export const LastMessages: React.FC = () => {
         },
         {
             id: 2,
-            avatar: av1,
+            avatar: 2,
             name: 'Baran',
             time: '11:50',
             message: 'co tam',
@@ -26,7 +21,7 @@ export const LastMessages: React.FC = () => {
         },
         {
             id: 3,
-            avatar: av2,
+            avatar: 1,
             name: 'Koniczyna',
             time: '18:20',
             message: 'witam serdecznie, skad sie biora takie zwierzeta jak ty?',
@@ -34,7 +29,7 @@ export const LastMessages: React.FC = () => {
         },
         {
             id: 4,
-            avatar: av0,
+            avatar: 3,
             name: 'Kalafior',
             time: '12:50',
             message: 'siema co tam u ciebie',
@@ -42,7 +37,7 @@ export const LastMessages: React.FC = () => {
         },
         {
             id: 5,
-            avatar: av1,
+            avatar: 2,
             name: 'Baran',
             time: '11:50',
             message: 'co tam',
@@ -50,7 +45,7 @@ export const LastMessages: React.FC = () => {
         },
         {
             id: 6,
-            avatar: av2,
+            avatar: 3,
             name: 'Koniczyna',
             time: '18:20',
             message: 'witam serdecznie, skad sie biora takie zwierzeta jak ty?',
@@ -58,7 +53,7 @@ export const LastMessages: React.FC = () => {
         },
         {
             id: 7,
-            avatar: av0,
+            avatar: 1,
             name: 'Kalafior',
             time: '12:50',
             message: 'siema co tam u ciebie',
@@ -66,7 +61,7 @@ export const LastMessages: React.FC = () => {
         },
         {
             id: 8,
-            avatar: av1,
+            avatar: 2,
             name: 'Baran',
             time: '11:50',
             message: 'co tam',
@@ -74,7 +69,7 @@ export const LastMessages: React.FC = () => {
         },
         {
             id: 9,
-            avatar: av2,
+            avatar: 0,
             name: 'Koniczyna',
             time: '18:20',
             message: 'witam serdecznie, skad sie biora takie zwierzeta jak ty?',
@@ -83,14 +78,15 @@ export const LastMessages: React.FC = () => {
     ];
     return (
         <div className="lastMessages">
-            {last.map((e) => (
+            {last.map((message) => (
                 <HistoryMessage
-                    key={e.id}
-                    id={e.id}
-                    name={e.name}
-                    time={e.time}
-                    message={e.message}
-                    unread={e.unread}
+                    avatar={message.avatar}
+                    key={message.id}
+                    id={message.id}
+                    name={message.name}
+                    time={message.time}
+                    message={message.message}
+                    unread={message.unread}
                 />
             ))}
         </div>
