@@ -142,6 +142,54 @@ html {
 .main {
     width: calc(100% - 60px);
     margin: 30px;
+    &__userHeader {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 0fr 1fr 0fr;
+        align-items: center;
+        & img {
+            height: 50px;
+            margin-right: 20px;
+        }
+        &__userName {
+            font-weight: 700;
+            font-size: 18px;
+        }
+    }
+}
+
+.dropdown {
+    position: fixed;
+    right: 30px;
+    top: 110px;
+
+    width: 130px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $bgl;
+    border-radius: 10px;
+    &__item {
+        height: 40px;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid darken($bgl, 5%);
+        text-decoration: none;
+        color: $t;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        & span {
+            display: block;
+        }
+        &--bold {
+            font-weight: 700;
 
     &__navigation {
         position: fixed;

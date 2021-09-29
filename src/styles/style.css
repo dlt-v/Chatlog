@@ -122,6 +122,52 @@ html {
   width: calc(100% - 60px);
   margin: 30px;
 }
+.main__userHeader {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 0fr 1fr 0fr;
+  align-items: center;
+}
+.main__userHeader img {
+  height: 50px;
+  margin-right: 20px;
+}
+.main__userHeader__userName {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.dropdown {
+  position: fixed;
+  right: 30px;
+  top: 110px;
+  width: 130px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e8effd;
+  border-radius: 10px;
+}
+.dropdown__item {
+  height: 40px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #d1dffb;
+  text-decoration: none;
+  color: #2d375a;
+}
+.dropdown__item:last-child {
+  border-bottom: none;
+}
+.dropdown__item span {
+  display: block;
+}
+.dropdown__item--bold {
+  font-weight: 700;
 .main__navigation {
   position: fixed;
   width: 250px;
