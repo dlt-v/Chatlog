@@ -5,7 +5,7 @@ interface Props {
     id: number;
     avatar: number;
     name: string;
-    time: string;
+    time: string | undefined;
     message: string;
     unread: number;
 }

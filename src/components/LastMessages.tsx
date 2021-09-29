@@ -1,7 +1,82 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { UserDataContext } from '../UserDataContext';
 import { HistoryMessage } from './HistoryMessage';
 
+interface MessageState {
+    name: string;
+    avatar: number;
+    id: number;
+    unread: number;
+    message: string;
+    time: string;
+}
+
 export const LastMessages: React.FC = () => {
+    const [conversations, setConversations] = useState<MessageState[]>([]);
+    const { user } = useContext(UserDataContext);
+
+    // Find all conversations
+    const fetchConversations = () => {
+        fetch(`http://localhost:3001/chats`)
+            .then((response) => response.json())
+            .then((response) => {
+                console.log('all conversations: ', response);
+                findUserConversations(response);
+            });
+    };
+
+    // Get user conversations
+    const findUserConversations = (chatlogs: MessageState[]) => {
+        let userConversations: MessageState[] = [];
+        chatlogs.filter((chat: any) => {
+            if (chat.participants.includes(user.id)) {
+                userConversations = [chat, ...userConversations];
+            }
+        });
+        parseUserConversations(userConversations);
+    };
+
+    // Create array with history message props
+    const parseUserConversations = async (userChats: MessageState[]) => {
+        let newConversations: MessageState[] = [];
+        userChats.map(async (chat: any) => {
+            const recipientId: number =
+                chat.participants[0] === user.id
+                    ? chat.participants[1]
+                    : chat.participants[0];
+
+            const recipient = await fetchOtherUser(recipientId);
+
+            const last = {
+                id: recipientId,
+                avatar: recipient.avatar,
+                name: recipient.name,
+                message: chat.messages[chat.messages.length - 1].content,
+                time: chat.messages[chat.messages.length - 1].date,
+                unread: 0, // todo later
+            };
+
+            console.log(last);
+            newConversations = [last, ...newConversations];
+        });
+
+        setTimeout(() => {
+            setConversations(newConversations);
+        }, 200);
+    };
+
+    // Get data about recipient
+    const fetchOtherUser = (otherUserId: number) => {
+        const result = fetch(`http://localhost:3001/users/${otherUserId}`)
+            .then((response) => response.json())
+            .then((response) => response);
+        return result;
+    };
+
+    useEffect(() => {
+        fetchConversations();
+    }, []);
+
     const last = [
         {
             id: 1,
@@ -76,9 +151,10 @@ export const LastMessages: React.FC = () => {
             unread: 0,
         },
     ];
+
     return (
         <div className="lastMessages">
-            {last.map((message) => (
+            {conversations.map((message) => (
                 <HistoryMessage
                     avatar={message.avatar}
                     key={message.id}

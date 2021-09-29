@@ -8,7 +8,7 @@ export const Main: React.FC = () => {
     return (
         <div className="main">
             <UserHeader />
-            <h2>This is main page</h2>
+            <h2>Messages</h2>
             <LastMessages />
             <Navigation />
         </div>
