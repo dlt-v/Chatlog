@@ -21,10 +21,11 @@ export const UserHeader: React.FC = () => {
                 <span className="main__userHeader__userName">{user.name}</span>
                 <span
                     onClick={() => setClose(!close)}
-                    className={close ? 'icon-back' : 'icon-options'}
+                    className={close ? 'icon-close' : 'icon-options'}
                 ></span>
+                {close && <Dropdown />}
             </div>
-            {close && <Dropdown />}
+            
         </div>
     );
 };
