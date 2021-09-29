@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { UserDataContext, UserState } from '../UserDataContext';
+import { UserDataContext } from '../UserDataContext';
 import { Dropdown } from './Dropdown';
 
 import av0 from '../styles/img/av-0.svg';
