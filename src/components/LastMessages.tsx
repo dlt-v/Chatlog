@@ -16,13 +16,14 @@ export const LastMessages: React.FC = () => {
     const { user } = useContext(UserDataContext);
 
     // Find all conversations
-    const fetchConversations = () => {
-        fetch(`http://localhost:3001/chats`)
+    const fetchConversations = async () => {
+        const result = await fetch(`http://localhost:3001/chats`)
             .then((response) => response.json())
-            .then((response) => {
-                console.log('all conversations: ', response);
-                findUserConversations(response);
-            });
+            .then((response) => response);
+
+        console.log('all conversations: ', result);
+        const userConversations = findUserConversations(result);
+        parseUserConversations(userConversations);
     };
 
     // Get user conversations
@@ -33,12 +34,13 @@ export const LastMessages: React.FC = () => {
                 userConversations = [chat, ...userConversations];
             }
         });
-        parseUserConversations(userConversations);
+        return userConversations;
     };
 
-    // Create array with history message props
-    const parseUserConversations = async (userChats: MessageState[]) => {
+    // Create history array
+    const parseUserConversations = (userChats: MessageState[]) => {
         let newConversations: MessageState[] = [];
+
         userChats.map(async (chat: any) => {
             const recipientId: number =
                 chat.participants[0] === user.id
@@ -58,11 +60,9 @@ export const LastMessages: React.FC = () => {
 
             console.log(last);
             newConversations = [last, ...newConversations];
-        });
 
-        setTimeout(() => {
             setConversations(newConversations);
-        }, 200);
+        });
     };
 
     // Get data about recipient
