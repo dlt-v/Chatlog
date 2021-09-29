@@ -163,6 +163,8 @@ html {
         align-items: center;
         justify-content: center;
         border-bottom: 1px solid darken($bgl, 5%);
+        text-decoration: none;
+        color: $t;
 
         &:last-child {
             border-bottom: none;

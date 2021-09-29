@@ -1,16 +1,15 @@
 import React from 'react';
-
-// interface Props {
-//     options: {}[];
-// }
+import { Link } from 'react-router-dom';
 
 export const Dropdown: React.FC = () => {
     return (
         <div className="dropdown">
-            <div className="dropdown__item">
+            <Link to="/login" className="dropdown__item">
                 <span>Edit Profile</span>
-            </div>
-            <div className="dropdown__item dropdown__item--bold">Logout</div>
+            </Link>
+            <Link to="/login" className="dropdown__item dropdown__item--bold">
+                Logout
+            </Link>
         </div>
     );
 };
