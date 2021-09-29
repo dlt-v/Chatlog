@@ -16,6 +16,23 @@ html {
     background-color: $bg;
 }
 
+.nav {
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    background-color: $bgl;
+    border-radius: 10px;
+}
+
+.nav a {
+    all: unset;
+    padding: 10px;
+    font-weight: 700;
+    font-size: 12px;
+    justify-self: center;
+}
+
 .login {
     width: calc(100% - 60px);
     margin: 30px;
@@ -173,6 +190,67 @@ html {
         }
         &--bold {
             font-weight: 700;
+
+    &__navigation {
+        position: fixed;
+        width: 250px;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        font-size: 20px;
+        background-color: $bg;
+        padding: 20px 100%;
+
+        &__friends {
+            justify-self: center;
+            opacity: 0.3;
+            transition: 0.3s 0.3s;
+            display: flex;
+            align-items: center;
+
+            &:active {
+                transition: 0.3s;
+                transform: scale(0.8);
+            }
+
+            &--active {
+                @extend .main__navigation__friends;
+                opacity: 1;
+                background-color: $bgl;
+                padding: 7px;
+                border-radius: 100%;
+            }
+        }
+
+        &__send {
+            justify-self: center;
+            font-size: 30px;
+            transition: 0.3s 0.3s;
+
+            &:active {
+                transition: 0.3s;
+                transform: scale(0.8);
+            }
+
+            & .icon-send::before {
+                color: $c;
+            }
+        }
+
+        &__search {
+            @extend .main__navigation__friends;
+
+            &:active {
+                transition: 0.3s;
+                transform: scale(0.8);
+            }
+
+            &--active {
+                @extend .main__navigation__friends--active;
+            }
         }
     }
 }
