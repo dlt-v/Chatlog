@@ -16,7 +16,7 @@ interface User {
 
 export const Login: React.FC = () => {
     const [nickname, setnickname] = useState<string>('');
-    const [avatar, setavatar] = useState<number>(100);
+    const [avatar, setavatar] = useState<number>(-1);
     const { setUser } = useContext(UserDataContext); //probable minefield
 
     let history = useHistory();
@@ -97,7 +97,7 @@ export const Login: React.FC = () => {
                 <div
                     onClick={() => setavatar(0)}
                     className={`${
-                        avatar === 0 || avatar === 100
+                        avatar === 0 || avatar === -1
                             ? 'login__item--active'
                             : 'login__item'
                     }`}
@@ -107,7 +107,7 @@ export const Login: React.FC = () => {
                 <div
                     onClick={() => setavatar(1)}
                     className={`${
-                        avatar === 1 || avatar === 100
+                        avatar === 1 || avatar === -1
                             ? 'login__item--active'
                             : 'login__item'
                     }`}
@@ -117,7 +117,7 @@ export const Login: React.FC = () => {
                 <div
                     onClick={() => setavatar(2)}
                     className={`${
-                        avatar === 2 || avatar === 100
+                        avatar === 2 || avatar === -1
                             ? 'login__item--active'
                             : 'login__item'
                     }`}
@@ -127,7 +127,7 @@ export const Login: React.FC = () => {
                 <div
                     onClick={() => setavatar(3)}
                     className={`${
-                        avatar === 3 || avatar === 100
+                        avatar === 3 || avatar === -1
                             ? 'login__item--active'
                             : 'login__item'
                     }`}

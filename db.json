@@ -19,36 +19,6 @@
             "id": 3,
             "name": "Dżejms",
             "avatar": 3
-        },
-        {
-            "name": "Pawel",
-            "avatar": 1,
-            "id": 4
-        },
-        {
-            "name": "Marcin",
-            "avatar": 2,
-            "id": 5
-        },
-        {
-            "name": "Tomcio",
-            "avatar": 1,
-            "id": 6
-        },
-        {
-            "name": "Tomeczek",
-            "avatar": 1,
-            "id": 7
-        },
-        {
-            "name": "Damian",
-            "avatar": 2,
-            "id": 8
-        },
-        {
-            "name": "Kalafior",
-            "avatar": 2,
-            "id": 9
         }
     ],
     "chats": [
@@ -70,7 +40,7 @@
                 {
                     "id": 2,
                     "sender_id": 0,
-                    "date": "2017-01-05 14:07",
+                    "date": "2021-09-30T13:49:51.141Z",
                     "content": "co tam?"
                 }
             ]
@@ -93,8 +63,8 @@
                 {
                     "id": 2,
                     "sender_id": 0,
-                    "date": "2017-01-05 14:07",
-                    "content": "co tam?"
+                    "date": "2018-12-10T13:49:51.141Z",
+                    "content": "gdzie jestes?"
                 }
             ]
         },
@@ -116,8 +86,8 @@
                 {
                     "id": 2,
                     "sender_id": 0,
-                    "date": "2017-01-05 14:07",
-                    "content": "co tam?"
+                    "date": "2018-12-10T13:49:51.141Z",
+                    "content": "skad sie bierze kapusta?"
                 }
             ]
         }
