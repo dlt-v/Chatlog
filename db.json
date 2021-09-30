@@ -1,113 +1,127 @@
 {
-    "users": [
+  "users": [
+    {
+      "id": 0,
+      "name": "Tomek",
+      "avatar": 0
+    },
+    {
+      "id": 1,
+      "name": "Dominik",
+      "avatar": 1
+    },
+    {
+      "id": 2,
+      "name": "Pablo",
+      "avatar": 2
+    },
+    {
+      "id": 3,
+      "name": "Dżejms",
+      "avatar": 3
+    },
+    {
+      "name": "Tomczak",
+      "avatar": 3,
+      "id": 4
+    }
+  ],
+  "chats": [
+    {
+      "participants": [
+        0,
+        1
+      ],
+      "messages": [
         {
-            "id": 0,
-            "name": "Tomek",
-            "avatar": 0
+          "id": 0,
+          "sender_id": 0,
+          "date": "2017-01-05 14:00",
+          "content": "hallo dziendobry"
         },
         {
-            "id": 1,
-            "name": "Dominik",
-            "avatar": 1
+          "id": 1,
+          "sender_id": 1,
+          "date": "2017-01-05 14:04",
+          "content": "hej"
         },
         {
-            "id": 2,
-            "name": "Pablo",
-            "avatar": 2
-        },
-        {
-            "id": 3,
-            "name": "Dżejms",
-            "avatar": 3
+          "id": 2,
+          "sender_id": 0,
+          "date": "2021-09-30T13:49:51.141Z",
+          "content": "co tam?"
         }
-    ],
-    "chats": [
+      ]
+    },
+    {
+      "participants": [
+        0,
+        2
+      ],
+      "messages": [
         {
-            "participants": [0, 1],
-            "messages": [
-                {
-                    "id": 0,
-                    "sender_id": 0,
-                    "date": "2017-01-05 14:00",
-                    "content": "hallo dziendobry"
-                },
-                {
-                    "id": 1,
-                    "sender_id": 1,
-                    "date": "2017-01-05 14:04",
-                    "content": "hej"
-                },
-                {
-                    "id": 2,
-                    "sender_id": 0,
-                    "date": "2021-09-30T13:49:51.141Z",
-                    "content": "co tam?"
-                }
-            ]
+          "id": 0,
+          "sender_id": 0,
+          "date": "2017-01-05 14:00",
+          "content": "hallo dziendobry"
         },
         {
-            "participants": [0, 2],
-            "messages": [
-                {
-                    "id": 0,
-                    "sender_id": 0,
-                    "date": "2017-01-05 14:00",
-                    "content": "hallo dziendobry"
-                },
-                {
-                    "id": 1,
-                    "sender_id": 2,
-                    "date": "2017-01-05 14:04",
-                    "content": "hej"
-                },
-                {
-                    "id": 2,
-                    "sender_id": 0,
-                    "date": "2018-12-10T13:49:51.141Z",
-                    "content": "gdzie jestes?"
-                }
-            ]
+          "id": 1,
+          "sender_id": 2,
+          "date": "2017-01-05 14:04",
+          "content": "hej"
         },
         {
-            "participants": [0, 3],
-            "messages": [
-                {
-                    "id": 0,
-                    "sender_id": 0,
-                    "date": "2017-01-05 14:00",
-                    "content": "hallo dziendobry"
-                },
-                {
-                    "id": 1,
-                    "sender_id": 3,
-                    "date": "2017-01-05 14:04",
-                    "content": "hej"
-                },
-                {
-                    "id": 2,
-                    "sender_id": 0,
-                    "date": "2018-12-10T13:49:51.141Z",
-                    "content": "skad sie bierze kapusta?"
-                }
-            ]
+          "id": 2,
+          "sender_id": 0,
+          "date": "2018-12-10T13:49:51.141Z",
+          "content": "gdzie jestes?"
         }
-    ],
-    "avatars": [
+      ]
+    },
+    {
+      "participants": [
+        0,
+        3
+      ],
+      "messages": [
         {
-            "id": 0,
-            "url": "../styles/img/av-0.svg"
+          "id": 0,
+          "sender_id": 0,
+          "date": "2017-01-05 14:00",
+          "content": "hallo dziendobry"
         },
         {
-            "id": 1,
-            "url": "../styles/img/av-1.svg"
+          "id": 1,
+          "sender_id": 3,
+          "date": "2017-01-05 14:04",
+          "content": "hej"
         },
         {
-            "id": 2,
-            "url": "../styles/img/av-2.svg"
-        },
-        {
-            "id": 3,
-            "url": "../styles/img/av-3.svg"
+          "id": 2,
+          "sender_id": 0,
+          "date": "2018-12-10T13:49:51.141Z",
+          "content": "skad sie bierze kapusta?"
         }
-    ]
+      ]
+    }
+  ],
+  "avatars": [
+    {
+      "id": 0,
+      "url": "../styles/img/av-0.svg"
+    },
+    {
+      "id": 1,
+      "url": "../styles/img/av-1.svg"
+    },
+    {
+      "id": 2,
+      "url": "../styles/img/av-2.svg"
+    },
+    {
+      "id": 3,
+      "url": "../styles/img/av-3.svg"
+    }
+  ]
 }
