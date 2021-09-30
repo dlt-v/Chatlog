@@ -5,10 +5,21 @@ interface Props {
     id: number;
     avatar: number;
     name: string;
-    time: string | undefined;
+    time: string;
     message: string;
     unread: number;
 }
+
+const parseTime = (time: string) => {
+    const messageTime = new Date(time);
+    const currentTime = new Date();
+
+    if (messageTime.getDate() !== currentTime.getDate()) {
+        return `${messageTime.getMonth() + 1}.${messageTime.getDate()}`;
+    } else {
+        return `${messageTime.getHours()}:${messageTime.getMinutes()}`;
+    }
+};
 
 export const HistoryMessage: React.FC<Props> = (props) => {
     return (
@@ -25,7 +36,7 @@ export const HistoryMessage: React.FC<Props> = (props) => {
             ) : (
                 <div></div>
             )}
-            <div className="historyMessage__time">{props.time}</div>
+            <div className="historyMessage__time">{parseTime(props.time)}</div>
         </div>
     );
 };
