@@ -171,6 +171,7 @@ export const Login: React.FC = () => {
             <h1 className="login__title">Hello!</h1>
             <div className="login__container">
                 <input
+                    spellCheck="false"
                     onChange={handleNick}
                     type="text"
                     className="login__input"
