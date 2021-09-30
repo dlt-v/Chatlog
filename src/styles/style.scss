@@ -16,6 +16,23 @@ html {
     background-color: $bg;
 }
 
+.nav {
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    background-color: $bgl;
+    border-radius: 10px;
+}
+
+.nav a {
+    all: unset;
+    padding: 10px;
+    font-weight: 700;
+    font-size: 12px;
+    justify-self: center;
+}
+
 .login {
     width: calc(100% - 60px);
     margin: 30px;
@@ -119,5 +136,197 @@ html {
             transition: 0.3s;
             transform: scale(0.9);
         }
+    }
+}
+
+.main {
+    width: calc(100% - 40px);
+    margin: 20px;
+
+    &__userHeader {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 0fr 1fr 0.1fr;
+        align-items: center;
+        position: relative;
+        & img {
+            height: 50px;
+            margin-right: 20px;
+        }
+        &__userName {
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        & .icon-close,
+        .icon-options {
+            text-align: center;
+        }
+    }
+    &__navigation {
+        position: fixed;
+        width: 250px;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        font-size: 20px;
+        background-color: $bg;
+        padding: 20px 100%;
+
+        &__friends {
+            justify-self: center;
+            opacity: 0.3;
+            transition: 0.3s 0.3s;
+            display: flex;
+            align-items: center;
+
+            &:active {
+                transition: 0.3s;
+                transform: scale(0.8);
+            }
+
+            &--active {
+                @extend .main__navigation__friends;
+                opacity: 1;
+                background-color: $bgl;
+                padding: 7px;
+                border-radius: 100%;
+            }
+        }
+
+        &__send {
+            justify-self: center;
+            font-size: 30px;
+            transition: 0.3s 0.3s;
+
+            &:active {
+                transition: 0.3s;
+                transform: scale(0.8);
+            }
+
+            & .icon-send::before {
+                color: $c;
+            }
+        }
+
+        &__search {
+            @extend .main__navigation__friends;
+
+            &:active {
+                transition: 0.3s;
+                transform: scale(0.8);
+            }
+
+            &--active {
+                @extend .main__navigation__friends--active;
+            }
+        }
+    }
+}
+
+.dropdown {
+    position: absolute;
+    right: 0;
+    top: 45px;
+    width: 130px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $bgl;
+    border-radius: 10px;
+    font-size: 14px;
+    &__item {
+        height: 35px;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid darken($bgl, 5%);
+        text-decoration: none;
+        color: $t;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        & span {
+            display: block;
+        }
+        &--bold {
+            font-weight: 700;
+        }
+    }
+}
+
+.lastMessages {
+    overflow: scroll;
+    height: calc(100vh - 260px);
+}
+
+.historyMessage {
+    display: grid;
+    grid-template-columns: 0fr 1fr 0fr 0fr;
+    grid-template-areas:
+        'avatar name unread date'
+        'avatar message unread date';
+    align-items: center;
+    padding: 10px 10px;
+    transition: 0.3s 0.3s;
+
+    &__avatar {
+        grid-area: avatar;
+        width: 50px;
+    }
+
+    &__nickname {
+        margin-left: 20px;
+        font-weight: 700;
+        font-size: 14px;
+        grid-area: name;
+    }
+
+    &__message {
+        font-size: 12px;
+        grid-area: message;
+        margin-left: 20px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    &__unread {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        grid-area: unread;
+        font-size: 9px;
+        font-weight: 700;
+        background-color: $c;
+        border-radius: 100%;
+        height: 19px;
+        width: 19px;
+        text-align: center;
+        color: $bg;
+        margin-left: 10px;
+    }
+
+    &__time {
+        font-weight: 700;
+        font-size: 12px;
+        grid-area: date;
+        justify-self: end;
+        margin-left: 10px;
+    }
+
+    &:active {
+        transition: 0.3s;
+        background-color: $bgl;
+        transform: scale(0.95);
+        border-radius: 10px;
     }
 }

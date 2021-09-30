@@ -24,6 +24,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-close:before {
+  content: "\e905";
+  color: #2d375a;
+}
 .icon-back:before {
   content: "\e900";
   color: #2d375a;
