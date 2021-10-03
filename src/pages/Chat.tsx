@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
 import { Input } from '../components/Input';
-import { UserDataContext } from '../UserDataContext';
+import { MessagesListContainer } from '../components/MessagesListContainer';
+import { UserHeader } from '../components/UserHeader';
 
 export const Chat: React.FC = () => {
-    const { openDm, setOpenDm } = useContext(UserDataContext);
+
     return (
         <div className="chat">
+            <UserHeader />
+            <MessagesListContainer />
             <Input />
         </div>
     );

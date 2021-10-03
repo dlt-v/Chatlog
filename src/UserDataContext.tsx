@@ -12,9 +12,9 @@ export type UserState = {
 
 const initialContext = {
     user: {
-        id: -1,
+        id: 0,
         avatar: 0,
-        name: 'Jan Nowak',
+        name: 'Tomek',
     },
     setUser: (user: UserState) => {},
 
