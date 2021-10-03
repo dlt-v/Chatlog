@@ -34,8 +34,8 @@ html {
 }
 
 .login {
-    width: calc(100% - 60px);
-    margin: 30px;
+    width: calc(100% - 40px);
+    margin: 20px;
 
     &__container {
         width: 100%;
@@ -331,3 +331,43 @@ html {
     }
 }
 
+.input {
+    width: 90vw;
+    background-color: $bgl;
+    margin-top: 20px;
+    padding: 15px 20px;
+    border-radius: 30px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 0fr;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
+
+    &__field {
+        //all: unset;
+        font-size: 14px;
+        color: $t;
+        display: flex;
+        align-items: center;
+        word-wrap: break-word;
+        word-break: break-all;
+
+        &:focus {
+            outline: none;
+        }
+
+        &::placeholder {
+            color: $t;
+            opacity: 0.3;
+        }
+    }
+
+    & .icon-send::before {
+        color: $c;
+        font-size: 1.3rem;
+        margin-left: 10px;
+    }
+}
