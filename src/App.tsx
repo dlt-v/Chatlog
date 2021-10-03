@@ -6,6 +6,7 @@ import { Main } from './pages/Main';
 import { Friends } from './pages/Friends';
 import { Search } from './pages/Search';
 import { Send } from './pages/Send';
+import { Chat } from './pages/Chat';
 
 export function App() {
     return (
@@ -17,6 +18,7 @@ export function App() {
                     <Link to="/friends">FRIENDS</Link>
                     <Link to="/search">SEARCH</Link>
                     <Link to="/send">SEND</Link>
+                    <Link to="/chat">CHAT</Link>
                 </div>
 
                 <Switch>
@@ -34,6 +36,9 @@ export function App() {
                     </Route>
                     <Route path="/send">
                         <Send />
+                    </Route>
+                    <Route path="/chat">
+                        <Chat />
                     </Route>
                 </Switch>
             </Router>

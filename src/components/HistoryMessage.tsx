@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { avatarList } from '../avatarList';
+import { UserDataContext } from '../UserDataContext';
+import { useHistory } from 'react-router';
 
 interface Props {
     id: number;
@@ -22,8 +24,19 @@ const parseTime = (time: string) => {
 };
 
 export const HistoryMessage: React.FC<Props> = (props) => {
+    const { setOpenDm } = useContext(UserDataContext);
+    let history = useHistory();
+
+    const openChat = () => {
+        setOpenDm({
+            id: props.id,
+            avatar: props.avatar,
+            name: props.name,
+        });
+        history.push('/chat');
+    };
     return (
-        <div className="historyMessage">
+        <div onClick={openChat} className="historyMessage">
             <img
                 src={avatarList[props.avatar]}
                 alt=""
