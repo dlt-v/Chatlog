@@ -330,3 +330,40 @@ html {
         border-radius: 10px;
     }
 }
+
+.search {
+    width: calc(100% - 40px);
+    margin: 20px;
+
+    &__header {
+        margin-top: 40px;
+    }
+    &__input {
+        all: unset;
+        display: block;
+        margin: 40px auto 0 auto;
+        width: calc(90% - 40px);
+        background-color: $bgl;
+        padding: 15px 20px;
+        border-radius: 1000px;
+        font-size: 14px;
+        color: $t;
+        font-family: 'Open Sans', sans-serif;
+        letter-spacing: 0.3px;
+        text-align: center;
+        font-weight: bold;
+        transition: 0.3s ease;
+
+        &::placeholder {
+            opacity: 0.3;
+            color: $t;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        &:active,
+        &:focus {
+            width: calc(100% - 40px);
+        }
+    }
+}
