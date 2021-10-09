@@ -5,20 +5,17 @@ export const Input: React.FC = () => {
     const [rows, setrows] = useState<number>(1);
 
     const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setText(e.target.value);
+        if (e.target.value.length < 400) setText(e.target.value);
     };
 
     return (
         <div className="input">
-            <span
-                role="textbox"
-                contentEditable="true"
+            <textarea
                 onChange={handleInput}
                 className="input__field"
-                aria-label="say hello"
-                title="say hello"
-               aria-placeholder="siema co tam"
-            ></span>
+                value={text}
+                rows={1}
+            ></textarea>
             <span className="icon-send"></span>
         </div>
     );

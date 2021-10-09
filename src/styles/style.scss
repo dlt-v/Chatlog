@@ -146,7 +146,7 @@ html {
     &__userHeader {
         width: 100%;
         display: grid;
-        grid-template-columns: 0fr 1fr 0.1fr;
+        grid-template-columns: 0fr 0fr 1fr 0.1fr;
         align-items: center;
         position: relative;
         & img {
@@ -161,6 +161,10 @@ html {
         & .icon-close,
         .icon-options {
             text-align: center;
+        }
+
+        & .icon-back {
+            margin-right: 20px;
         }
     }
     &__navigation {
@@ -349,15 +353,14 @@ html {
     left: 50%;
     transform: translateX(-50%);
     bottom: 20px;
+    max-width: 400px;
 
     &__field {
-        //all: unset;
+        all: unset;
         font-size: 14px;
         color: $t;
         display: flex;
         align-items: center;
-        word-wrap: break-word;
-        word-break: break-all;
 
         &:focus {
             outline: none;

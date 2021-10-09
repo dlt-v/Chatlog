@@ -2,16 +2,35 @@ import React, { useState, useContext } from 'react';
 import { UserDataContext } from '../UserDataContext';
 import { Dropdown } from './Dropdown';
 import { avatarList } from '../avatarList';
+import { useHistory } from 'react-router';
 
-export const UserHeader: React.FC = () => {
+interface Props {
+    isChat?: boolean;
+}
+
+export const UserHeader: React.FC<Props> = (props) => {
+    let history = useHistory();
     const [close, setClose] = useState(false);
-    const { user } = useContext(UserDataContext);
+    const { user, openDm } = useContext(UserDataContext);
+
+    const backIcon = () => {
+        const restult = props.isChat ? (
+            <span
+                onClick={() => history.push('/')}
+                className="icon-back"
+            ></span>
+        ) : (
+            <div></div>
+        );
+        return restult;
+    };
 
     return (
         <div>
             <div className="main__userHeader">
-                <img src={avatarList[user.avatar]} alt="avatar" />
-                <span className="main__userHeader__userName">{user.name}</span>
+                {backIcon()}
+                <img src={props.isChat ? avatarList[openDm.avatar] :avatarList[user.avatar]} alt="avatar" />
+                <span className="main__userHeader__userName">{props.isChat ? openDm.name : user.name}</span>
                 <span
                     onClick={() => setClose(!close)}
                     className={close ? 'icon-close' : 'icon-options'}
