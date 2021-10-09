@@ -425,5 +425,74 @@ html {
             justify-self: end;
             opacity: 0.5;
         }
+  }
+}
+.search {
+    width: calc(100% - 40px);
+    margin: 20px;
+
+    &__header {
+        margin-top: 40px;
+    }
+    &__input {
+        all: unset;
+        display: block;
+        margin: 40px auto 0 auto;
+        width: calc(90% - 40px);
+        background-color: $bgl;
+        padding: 15px 20px;
+        border-radius: 1000px;
+        font-size: 14px;
+        color: $t;
+        font-family: 'Open Sans', sans-serif;
+        letter-spacing: 0.3px;
+        text-align: center;
+        font-weight: bold;
+        transition: 0.3s ease;
+
+        &::placeholder {
+            opacity: 0.3;
+            color: $t;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        &:active,
+        &:focus {
+            width: calc(100% - 40px);
+        }
+    }
+
+    &__container {
+        height: calc(100vh - 320px);
+        margin: 20px auto;
+        &--friends {
+            height: calc(100vh - 395px);
+        }
+    }
+}
+
+.userCard {
+    display: grid;
+    grid-template-columns: 0fr 1fr 0fr 0fr;
+    grid-template-areas:
+        'avatar name unread date'
+        'avatar message unread date';
+    align-items: center;
+    padding: 10px 10px;
+    transition: 0.3s 0.3s;
+    &__avatar {
+        width: 50px;
+    }
+    &__name {
+        margin-left: 20px;
+        font-weight: bold;
+    }
+
+    &:active {
+        transition: 0.3s;
+        background-color: $bgl;
+        transform: scale(0.95);
+        border-radius: 10px;
     }
 }
