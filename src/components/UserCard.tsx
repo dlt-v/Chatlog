@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import { avatarList } from '../avatarList';
 import { UserState } from '../UserDataContext';
 
@@ -6,6 +7,7 @@ interface Props {
     id: number;
 }
 export const UserCard: React.FC<Props> = (props) => {
+    const history = useHistory();
     const [user, setUser] = useState<UserState>({
         id: props.id,
         name: '',
@@ -23,11 +25,15 @@ export const UserCard: React.FC<Props> = (props) => {
         });
     };
 
+    const openDms = () => {
+        history.push('/chat');
+    };
+
     useEffect(() => {
         fetchUser();
     }, []);
     return (
-        <div className="userCard">
+        <div className="userCard" onClick={() => openDms()}>
             <img
                 src={avatarList[user.avatar]}
                 alt={user.name}
