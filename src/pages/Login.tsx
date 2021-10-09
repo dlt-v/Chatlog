@@ -4,7 +4,6 @@ import { useHistory } from 'react-router';
 
 import artwork from '../styles/img/artwork.svg';
 import { avatarList } from '../avatarList';
-import { finished } from 'stream';
 
 interface User {
     avatar: number;
