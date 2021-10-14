@@ -1,6 +1,9 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router';
 
+import { onSnapshot, collection } from '@firebase/firestore';
+import db from '../fbconfig';
+
 import { UserHeader } from '../components/UserHeader';
 import { Navigation } from '../components/Navigation';
 import { LastMessages } from '../components/LastMessages';
@@ -12,6 +15,12 @@ export const Main: React.FC = () => {
 
     useEffect(() => {
         if (user.id === -1) history.push('/login');
+
+        const unsubscribe = onSnapshot(collection(db, 'users'), (snapshot) => {
+            console.log(snapshot.docs.map((document) => document.data()));
+        });
+
+        return unsubscribe;
     }, []);
 
     return (
