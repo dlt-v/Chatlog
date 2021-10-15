@@ -17,7 +17,12 @@ export const Main: React.FC = () => {
         if (user.id === -1) history.push('/login');
 
         const unsubscribe = onSnapshot(collection(db, 'users'), (snapshot) => {
-            console.log(snapshot.docs.map((document) => document.data()));
+            console.log(
+                snapshot.docs.map((document) => ({
+                    ...document.data(),
+                    id: document.id, //id of the object is not in the properties, hence we have to add it like so
+                }))
+            );
         });
 
         return unsubscribe;
