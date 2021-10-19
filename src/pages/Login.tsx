@@ -2,12 +2,15 @@ import React, { useState, useContext } from 'react';
 import { UserDataContext } from '../UserDataContext';
 import { useHistory } from 'react-router';
 
+import { handleCreateUser, handleFindUser } from '../firebase/utilities';
+
 import artwork from '../styles/img/artwork.svg';
 import { avatarList } from '../avatarList';
 
-interface User {
+export interface NewUser {
     avatar: number;
     name: string;
+    friends: number[];
 }
 
 //User inputs a name
@@ -44,7 +47,7 @@ export const Login: React.FC = () => {
                 .then((data) => {
                     if (
                         data.find(
-                            (otherUser: User) => finalName === otherUser.name
+                            (otherUser: NewUser) => finalName === otherUser.name
                         )
                     ) {
                         //User already exists -> login
@@ -58,10 +61,12 @@ export const Login: React.FC = () => {
         }
     };
     const createNewUser = async () => {
-        const newUser: User = {
+        const newUser: NewUser = {
             name: nickname,
             avatar: avatar === -1 ? Math.floor(Math.random() * 4) : avatar,
+            friends: [],
         };
+        // TODO: DELETE ========
         await fetch('http://localhost:3001/users', {
             method: 'POST',
             headers: {
@@ -69,11 +74,12 @@ export const Login: React.FC = () => {
             },
             body: JSON.stringify(newUser),
         });
-
-        loginUser();
+        // =================
+        handleCreateUser(newUser);
     };
 
     const loginUser = async () => {
+        handleFindUser(nickname, false)
         const result = await fetch(
             `http://localhost:3001/users?name=${nickname}`
         ).then((response) => response.json());

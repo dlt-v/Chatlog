@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router';
 
 import { onSnapshot, collection } from '@firebase/firestore';
-import db from '../fbconfig';
+import db from '../firebase/fbconfig';
 
 import { UserHeader } from '../components/UserHeader';
 import { Navigation } from '../components/Navigation';
