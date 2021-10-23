@@ -12,7 +12,6 @@ import {
 import db from './fbconfig';
 
 import { NewUser } from '../pages/Login';
-import { cachedUser } from '../pages/Login';
 
 export const handleCreateUser = async (user: NewUser) => {
     const collectionRef = collection(db, 'users');

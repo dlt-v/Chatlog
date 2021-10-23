@@ -58,7 +58,6 @@ export const Login: React.FC = () => {
             const result: any = await handleFindUser(finalName, true);
             if (result) {
                 // if user already exists
-                console.log(result);
                 setIsCreated(true);
                 setUserCache(result);
             } else {

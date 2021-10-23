@@ -14,7 +14,7 @@ export const UserHeader: React.FC<Props> = (props) => {
     const { user, openDm } = useContext(UserDataContext);
 
     const backIcon = () => {
-        const restult = props.isChat ? (
+        const result = props.isChat ? (
             <span
                 onClick={() => history.push('/')}
                 className="icon-back"
@@ -22,14 +22,14 @@ export const UserHeader: React.FC<Props> = (props) => {
         ) : (
             <div></div>
         );
-        return restult;
+        return result;
     };
 
     return (
         <div>
             <div className="main__userHeader">
                 {backIcon()}
-                <img src={props.isChat ? avatarList[openDm.avatar] :avatarList[user.avatar]} alt="avatar" />
+                <img src={props.isChat ? avatarList[openDm.avatar] :avatarList[user.avatar]}alt="avatar" />
                 <span className="main__userHeader__userName">{props.isChat ? openDm.name : user.name}</span>
                 <span
                     onClick={() => setClose(!close)}
