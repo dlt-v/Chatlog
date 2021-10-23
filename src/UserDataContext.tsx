@@ -8,6 +8,7 @@ export type UserState = {
     id: number;
     avatar: number;
     name: string;
+    friends?: number[];
 };
 
 const initialContext = {

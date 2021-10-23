@@ -83,6 +83,18 @@
       "avatar": 1,
       "friends": [],
       "id": 10
+    },
+    {
+      "name": "Tomek",
+      "avatar": 2,
+      "friends": [],
+      "id": 11
+    },
+    {
+      "name": "Michalina",
+      "avatar": 1,
+      "friends": [],
+      "id": 12
     }
   ],
   "chats": [

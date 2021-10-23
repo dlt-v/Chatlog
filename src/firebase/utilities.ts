@@ -12,6 +12,7 @@ import {
 import db from './fbconfig';
 
 import { NewUser } from '../pages/Login';
+import { cachedUser } from '../pages/Login';
 
 export const handleCreateUser = async (user: NewUser) => {
     const collectionRef = collection(db, 'users');
@@ -29,7 +30,7 @@ export const handleFindUser = async (searchValue: string, byName: boolean) => {
             ...doc.data(),
             id: doc.id,
         }));
-        console.log(results);
+        return results[0];
     } else {
         const docRef = doc(db, 'users', searchValue);
         const docSnap = await getDoc(docRef);

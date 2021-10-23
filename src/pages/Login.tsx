@@ -13,6 +13,13 @@ export interface NewUser {
     friends: number[];
 }
 
+export interface cachedUser {
+    avatar: number;
+    name: string;
+    friends: number[];
+    id: string;
+}
+
 //User inputs a name
 //System checks if the user already exists
 //If it does -> then show a login button
@@ -21,10 +28,16 @@ export interface NewUser {
 export const Login: React.FC = () => {
     const [nickname, setnickname] = useState<string>('');
     const [avatar, setavatar] = useState<number>(-1);
-    const { setUser } = useContext(UserDataContext); //probable minefield
+    const { setUser } = useContext(UserDataContext);
     const [timer, setTimer] = useState<any>(null);
     const [finishedTyping, setFinishedTyping] = useState<boolean>(false);
     const [isCreated, setIsCreated] = useState<boolean>();
+    const [userCache, setUserCache] = useState<cachedUser>({
+        name: '',
+        id: '',
+        avatar: -1,
+        friends: [],
+    });
 
     let history = useHistory();
 
@@ -42,21 +55,16 @@ export const Login: React.FC = () => {
 
     const validateInput = async (finalName: string) => {
         if (finalName.length > 2) {
-            await fetch('http://localhost:3001/users')
-                .then((response) => response.json())
-                .then((data) => {
-                    if (
-                        data.find(
-                            (otherUser: NewUser) => finalName === otherUser.name
-                        )
-                    ) {
-                        //User already exists -> login
-                        setIsCreated(true);
-                    } else {
-                        //User doesn't exist -> create an account and login
-                        setIsCreated(false);
-                    }
-                });
+            const result: any = await handleFindUser(finalName, true);
+            if (result) {
+                // if user already exists
+                console.log(result);
+                setIsCreated(true);
+                setUserCache(result);
+            } else {
+                setIsCreated(false);
+            }
+
             setFinishedTyping(true);
         }
     };
@@ -66,28 +74,22 @@ export const Login: React.FC = () => {
             avatar: avatar === -1 ? Math.floor(Math.random() * 4) : avatar,
             friends: [],
         };
-        // TODO: DELETE ========
-        await fetch('http://localhost:3001/users', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newUser),
+        const newUserId: string = await handleCreateUser(newUser);
+        setUserCache({
+            name: nickname,
+            id: newUserId,
+            friends: [],
+            avatar: avatar,
         });
-        // =================
-        handleCreateUser(newUser);
+        loginUser();
     };
 
     const loginUser = async () => {
-        handleFindUser(nickname, false)
-        const result = await fetch(
-            `http://localhost:3001/users?name=${nickname}`
-        ).then((response) => response.json());
-
         setUser({
-            name: result[0].name,
-            id: result[0].id,
-            avatar: result[0].avatar,
+            name: userCache.name,
+            friends: userCache.friends,
+            id: parseInt(userCache.id), //DO TESTÓW
+            avatar: userCache.avatar,
         });
         history.push('/');
     };
