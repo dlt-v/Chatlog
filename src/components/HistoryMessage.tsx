@@ -4,7 +4,7 @@ import { UserDataContext } from '../UserDataContext';
 import { useHistory } from 'react-router';
 
 interface Props {
-    id: number;
+    id: string;
     avatar: number;
     name: string;
     time: string;
@@ -29,7 +29,7 @@ export const HistoryMessage: React.FC<Props> = (props) => {
 
     const openChat = () => {
         setOpenDm({
-            id: props.id,
+            id: 0, // TODO: Replace this id with the current logged user's ID!
             avatar: props.avatar,
             name: props.name,
         });

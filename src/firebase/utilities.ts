@@ -12,6 +12,7 @@ import {
 import db from './fbconfig';
 
 import { NewUser } from '../pages/Login';
+import { OpenChat } from '../components/LastMessagesContainer';
 
 export const handleCreateUser = async (user: NewUser) => {
     const collectionRef = collection(db, 'users');
@@ -35,4 +36,25 @@ export const handleFindUser = async (searchValue: string, byName: boolean) => {
         const docSnap = await getDoc(docRef);
         console.log(docSnap.data());
     }
+};
+
+export const handleFindUserConversations = async (userId: string) => {
+    return [
+        {
+            name: 'Adam',
+            avatar: 1,
+            id: 'edgdfgdgd',
+            unread: 0,
+            message: 'hello there!',
+            time: '17:00',
+        },
+        {
+            name: 'Monika',
+            avatar: 1,
+            id: 'asdfas',
+            unread: 0,
+            message: "How's it going?",
+            time: '21:37',
+        },
+    ];
 };
