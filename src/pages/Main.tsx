@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 
 import { UserHeader } from '../components/UserHeader';
 import { Navigation } from '../components/Navigation';
-import { LastMessages } from '../components/LastMessages';
+import { LastMessagesContainer } from '../components/LastMessagesContainer';
 import { UserDataContext } from '../UserDataContext';
 
 export const Main: React.FC = () => {
@@ -18,7 +18,7 @@ export const Main: React.FC = () => {
         <div className="main">
             <UserHeader />
             <h2>Messages</h2>
-            <LastMessages />
+            <LastMessagesContainer />
             <Navigation />
         </div>
     );

@@ -11,7 +11,7 @@ interface MessageState {
     time: string;
 }
 
-export const LastMessages: React.FC = () => {
+export const LastMessagesContainer: React.FC = () => {
     const [conversations, setConversations] = useState<MessageState[]>([]);
     const { user } = useContext(UserDataContext);
 
