@@ -75,7 +75,7 @@ export const LastMessagesContainer: React.FC = () => {
     // };
 
     const fetchConversations = async () => {
-        const result: OpenChat[] = await handleFindUserConversations('fsdfsfs');
+        const result: OpenChat[] = await handleFindUserConversations(`${user.id}`);
         setConversations(result);
     };
 

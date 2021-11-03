@@ -37,8 +37,10 @@ export const handleFindUser = async (searchValue: string, byName: boolean) => {
         console.log(docSnap.data());
     }
 };
-
+// Return an array of open chats that our user has currently with other users - for Main.tsx
 export const handleFindUserConversations = async (userId: string) => {
+    
+
     return [
         {
             name: 'Adam',
