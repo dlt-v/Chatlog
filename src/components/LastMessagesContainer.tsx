@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { UserDataContext } from '../UserDataContext';
 import { HistoryMessage } from './HistoryMessage';
-import { LastMessages, Message } from '../../types';
+import { Conversation, Participant } from '../../types';
 
 import { handleFindUserConversations } from '../firebase/utilities';
 
-export interface LastRecipient {
+export interface Recipient {
     name: string;
     avatar: number;
     id: string;
@@ -16,46 +16,74 @@ export interface LastRecipient {
 }
 
 export const LastMessagesContainer: React.FC = () => {
-    const [conversations, setConversations] = useState<LastRecipient[]>([]);
+    const [conversations, setConversations] = useState<Recipient[]>([]);
     const { user } = useContext(UserDataContext);
 
-    const findRecipientDetails = (conversation: any) => {
-        const recipientConversation: Message = conversation.find(
-            (message: Message) => message.sender.id !== user.id
-        );
+    /** This function finds
+     * the recipient's id
+     */
+    const getRecipientId = (conversation: Conversation) => {
+        const recipientId: string | undefined =
+            conversation.participantsId.find((id: string) => id !== user.id);
 
-        return recipientConversation;
+        return recipientId;
     };
 
-    const fetchConversations = async () => {
-        const result: LastMessages[] = await handleFindUserConversations(
-            `${user.id}`
+    /** This function gets
+     * the recipient's details
+     */
+    const getRecipientDetails = (id: string, conversation: Conversation) => {
+        const details: Participant | undefined = conversation.participants.find(
+            (details: Participant) => details.id === id
         );
 
-        let newConversations: LastRecipient[] = [];
+        return details;
+    };
 
-        for (const conversation of result) {
+    /** This function creates
+     * a new array to render
+     */
+    const createLastMessagesList = (conversations: Conversation[]) => {
+        let newConversations: Recipient[] = [];
+
+        for (const conversation of conversations) {
             if (!conversation) return;
             if (!conversation.messages) return;
 
-            const recipientConversation: Message = findRecipientDetails(
-                conversation.messages
-            );
+            const recipientId: string | undefined =
+                getRecipientId(conversation);
+            if (!recipientId) return;
 
-            const newConversationObject: LastRecipient = {
-                avatar: recipientConversation.sender.avatar,
+            const details: Participant | undefined = getRecipientDetails(
+                recipientId,
+                conversation
+            );
+            if (!details) return;
+
+            const newConversationObject: Recipient = {
+                avatar: details.avatar,
                 key: conversation.id,
                 id: conversation.id,
-                name: recipientConversation.sender.name,
+                name: details.name,
                 time: conversation.messages[0].date.seconds,
                 message: conversation.messages[0]?.content,
-                unread: 1,
+                unread: 0,
             };
-
             newConversations.push(newConversationObject);
         }
-
         setConversations(newConversations);
+    };
+
+    /** This function gets
+     * list of current
+     * user messages
+     */
+    const fetchConversations = async () => {
+        const result: Conversation[] = await handleFindUserConversations(
+            `${user.id}`
+        );
+
+        createLastMessagesList(result);
     };
 
     useEffect(() => {

@@ -1,14 +1,15 @@
-export interface LastMessages {
-    participants: string[];
-    messages:     Message[];
-    id:           string;
+export interface Conversation {
+    messages:       Message[];
+    participants:   Participant[];
+    participantsId: string[];
+    id:             string;
 }
 
 export interface Message {
-    content: string;
-    sender:  Sender;
     id:      number;
     date:    DateClass;
+    content: string;
+    sender:  Participant;
 }
 
 export interface DateClass {
@@ -16,8 +17,8 @@ export interface DateClass {
     nanoseconds: number;
 }
 
-export interface Sender {
-    id:     string;
+export interface Participant {
     avatar: number;
     name:   string;
+    id:     string;
 }

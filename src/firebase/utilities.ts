@@ -12,7 +12,6 @@ import {
 import db from './fbconfig';
 
 import { NewUser } from '../pages/Login';
-import { LastMessages } from '../../types';
 
 export const handleCreateUser = async (user: NewUser) => {
     const collectionRef = collection(db, 'users');
@@ -34,16 +33,16 @@ export const handleFindUser = async (searchValue: string, byName: boolean) => {
     } else {
         const docRef = doc(db, 'users', searchValue);
         const docSnap = await getDoc(docRef);
-        console.log(docSnap.data());
     }
 };
 
 // Return an array of open chats that our user has currently with other users - for Main.tsx
 export const handleFindUserConversations = async (userId: string) => {
     const collectionRef = collection(db, 'chats');
+
     const q = query(
         collectionRef,
-        where('participants', 'array-contains', userId)
+        where('participantsId', 'array-contains', userId)
     );
     const snapshot = await getDocs(q);
     const results: any[] = snapshot.docs.map((doc) => ({
