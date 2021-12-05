@@ -11,7 +11,7 @@ export const Main: React.FC = () => {
     let history = useHistory();
 
     useEffect(() => {
-        if (user.id === -1) history.push('/login');
+        if (user.id === "-1") history.push('/login');
     }, [history, user.id]);
 
     return (

@@ -12,7 +12,7 @@ import {
 import db from './fbconfig';
 
 import { NewUser } from '../pages/Login';
-import { OpenChat } from '../components/LastMessagesContainer';
+import { LastMessages } from '../../types';
 
 export const handleCreateUser = async (user: NewUser) => {
     const collectionRef = collection(db, 'users');
@@ -37,26 +37,19 @@ export const handleFindUser = async (searchValue: string, byName: boolean) => {
         console.log(docSnap.data());
     }
 };
+
 // Return an array of open chats that our user has currently with other users - for Main.tsx
 export const handleFindUserConversations = async (userId: string) => {
-    
+    const collectionRef = collection(db, 'chats');
+    const q = query(
+        collectionRef,
+        where('participants', 'array-contains', userId)
+    );
+    const snapshot = await getDocs(q);
+    const results: any[] = snapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+    }));
 
-    return [
-        {
-            name: 'Adam',
-            avatar: 1,
-            id: 'edgdfgdgd',
-            unread: 0,
-            message: 'hello there!',
-            time: '17:00',
-        },
-        {
-            name: 'Monika',
-            avatar: 1,
-            id: 'asdfas',
-            unread: 0,
-            message: "How's it going?",
-            time: '21:37',
-        },
-    ];
+    return results;
 };

@@ -4,7 +4,7 @@ import { avatarList } from '../avatarList';
 import { UserState } from '../UserDataContext';
 
 interface Props {
-    id: number;
+    id: string;
 }
 export const UserCard: React.FC<Props> = (props) => {
     const history = useHistory();

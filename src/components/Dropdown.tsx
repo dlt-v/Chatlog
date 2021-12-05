@@ -7,7 +7,7 @@ export const Dropdown: React.FC = () => {
 
     const logoutUser = () => {
         setUser({
-            id: -1,
+            id: "-1",
             avatar: -1,
             name: '',
         });

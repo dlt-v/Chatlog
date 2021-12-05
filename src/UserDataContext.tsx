@@ -5,7 +5,7 @@ type Props = {
 };
 
 export type UserState = {
-    id: number;
+    id: string;
     avatar: number;
     name: string;
     friends?: number[];
@@ -13,14 +13,14 @@ export type UserState = {
 
 const initialContext = {
     user: {
-        id: 0,
+        id: "Mm7qR069T0fyU77IDRPG",
         avatar: 0,
         name: 'Tomek',
     },
     setUser: (user: UserState) => {},
 
     openDm: {
-        id: -1,
+        id: "-1",
         avatar: -1,
         name: '',
     },

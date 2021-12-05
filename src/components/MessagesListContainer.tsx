@@ -5,7 +5,7 @@ import { useHistory } from 'react-router';
 
 interface Message {
     id: number;
-    sender_id: number;
+    sender_id: string;
     date: string;
     content: string;
 }

@@ -7,12 +7,12 @@ interface Props {
     id: string;
     avatar: number;
     name: string;
-    time: string;
+    time: number;
     message: string;
     unread: number;
 }
 
-const parseTime = (time: string) => {
+const parseTime = (time: number) => {
     const messageTime = new Date(time);
     const currentTime = new Date();
 
@@ -29,7 +29,7 @@ export const HistoryMessage: React.FC<Props> = (props) => {
 
     const openChat = () => {
         setOpenDm({
-            id: 0, // TODO: Replace this id with the current logged user's ID!
+            id: "123", // TODO: Replace this id with the current logged user's ID!
             avatar: props.avatar,
             name: props.name,
         });

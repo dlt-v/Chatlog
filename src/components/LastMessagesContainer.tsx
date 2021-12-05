@@ -1,94 +1,73 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { UserDataContext } from '../UserDataContext';
 import { HistoryMessage } from './HistoryMessage';
+import { LastMessages, Message } from '../../types';
 
 import { handleFindUserConversations } from '../firebase/utilities';
 
-export interface OpenChat {
+export interface LastRecipient {
     name: string;
     avatar: number;
     id: string;
     unread: number;
     message: string;
-    time: string;
+    time: number;
+    key: string;
 }
 
 export const LastMessagesContainer: React.FC = () => {
-    const [conversations, setConversations] = useState<OpenChat[]>([]);
+    const [conversations, setConversations] = useState<LastRecipient[]>([]);
     const { user } = useContext(UserDataContext);
 
-    // Find all conversations
-    // const fetchConversations = async () => {
-    //     const result = await fetch(`http://localhost:3001/chats`)
-    //         .then((response) => response.json())
-    //         .then((response) => response);
+    const findRecipientDetails = (conversation: any) => {
+        const recipientConversation: Message = conversation.find(
+            (message: Message) => message.sender.id !== user.id
+        );
 
-    //     const userConversations = findUserConversations(result);
-    //     parseUserConversations(userConversations);
-    // };
-
-    // // Get user conversations
-    // const findUserConversations = (chatlogs: OpenChat[]) => {
-    //     let userConversations: OpenChat[] = [];
-
-    //     chatlogs.filter((chat: any) => {
-    //         if (chat.participants.includes(user.id)) {
-    //             userConversations = [chat, ...userConversations];
-    //         }
-    //     });
-
-    //     return userConversations;
-    // };
-
-    // // Create history array
-    // const parseUserConversations = (userChats: OpenChat[]) => {
-    //     let newConversations: OpenChat[] = [];
-
-    //     userChats.map(async (chat: any) => {
-    //         const recipientId: number =
-    //             chat.participants[0] === user.id
-    //                 ? chat.participants[1]
-    //                 : chat.participants[0];
-
-    //         const recipient = await fetchOtherUser(recipientId);
-
-    //         const last = {
-    //             id: recipientId,
-    //             avatar: recipient.avatar,
-    //             name: recipient.name,
-    //             message: chat.messages[chat.messages.length - 1].content,
-    //             time: chat.messages[chat.messages.length - 1].date,
-    //             unread: 0, // todo later
-    //         };
-    //         newConversations = [last, ...newConversations];
-
-    //         setConversations(newConversations);
-    //     });
-    // };
-
-    // // Get data about recipient
-    // const fetchOtherUser = (otherUserId: number) => {
-    //     const result = fetch(`http://localhost:3001/users/${otherUserId}`)
-    //         .then((response) => response.json())
-    //         .then((response) => response);
-    //     return result;
-    // };
+        return recipientConversation;
+    };
 
     const fetchConversations = async () => {
-        const result: OpenChat[] = await handleFindUserConversations(`${user.id}`);
-        setConversations(result);
+        const result: LastMessages[] = await handleFindUserConversations(
+            `${user.id}`
+        );
+
+        let newConversations: LastRecipient[] = [];
+
+        for (const conversation of result) {
+            if (!conversation) return;
+            if (!conversation.messages) return;
+
+            const recipientConversation: Message = findRecipientDetails(
+                conversation.messages
+            );
+
+            const newConversationObject: LastRecipient = {
+                avatar: recipientConversation.sender.avatar,
+                key: conversation.id,
+                id: conversation.id,
+                name: recipientConversation.sender.name,
+                time: conversation.messages[0].date.seconds,
+                message: conversation.messages[0]?.content,
+                unread: 1,
+            };
+
+            newConversations.push(newConversationObject);
+        }
+
+        setConversations(newConversations);
     };
 
     useEffect(() => {
         fetchConversations();
-    }, []);
+    }, [user]);
 
     return (
         <div className="lastMessages">
             {conversations.map((message) => (
                 <HistoryMessage
                     avatar={message.avatar}
-                    key={message.id}
+                    key={message.key}
                     id={message.id}
                     name={message.name}
                     time={message.time}

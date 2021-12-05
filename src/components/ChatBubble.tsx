@@ -1,10 +1,10 @@
 import React from 'react';
 
 interface Props {
-    sender_id: number;
+    sender_id: string;
     date: string;
     content: string;
-    recipient: number;
+    recipient: string;
 }
 
 const parseTime = (time: string) => {

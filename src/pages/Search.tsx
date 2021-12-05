@@ -14,7 +14,7 @@ interface Props {
 }
 export const Search: React.FC<Props> = (props) => {
     const { user } = useContext(UserDataContext);
-    const [friendList, setFriendList] = useState<number[]>([]);
+    const [friendList, setFriendList] = useState<string[]>([]);
     const [userList, setUserList] = useState<any[]>([]);
     const [input, setInput] = useState<string>('');
 

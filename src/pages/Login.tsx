@@ -87,7 +87,7 @@ export const Login: React.FC = () => {
         setUser({
             name: userCache.name,
             friends: userCache.friends,
-            id: parseInt(userCache.id), //DO TESTÓW
+            id: userCache.id, //DO TESTÓW
             avatar: userCache.avatar,
         });
         history.push('/');
